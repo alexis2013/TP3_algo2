@@ -63,7 +63,6 @@ def camino_minimo(grafo, desde, hasta):
 
 	res = []
 	if grafo.es_pesado:
-		
 		pesos, caminos = dijkstra(grafo, desde, hasta)
 	else:
 		caminos = grafo.bfs()
@@ -145,9 +144,9 @@ def viajante(grafo, origen):   #solo para no dirigido, pesado, y completo
 		if v in visitados:
 			continue
 		camino.append(v)
-		peso = float(grafo.ver_peso(anterior , v)) + peso
+		peso = grafo.ver_peso(anterior , v) + peso
 		anterior = v
-	peso += float(grafo.ver_peso(anterior, origen))
+	peso += grafo.ver_peso(anterior, origen)
 	camino, peso = _dfs_viajante(grafo,origen,origen, peso, 0, [], camino,visitados)
 	camino.append(origen)
 	return peso, camino
@@ -162,16 +161,16 @@ def viajante_aproximado(grafo, origen):
 	while ultimo:
 		visitados.add(ultimo)
 		camino.append(ultimo)
-		heap = Heap(cmp_aristas)
+		heap = Heap(cmp_arista)
 		for v in grafo.obtener_vecinos(ultimo):
 			if v in visitados:
 				continue
-			heap.encolar(Arista(ultimo,v,grafo.ver_peso(ultimo,v)))
+			heap.encolar((ultimo,v,grafo.ver_peso(ultimo,v)))
 		if heap.esta_vacio():
 			ultimo = None
 		else:
 			arista = heap.desencolar()
-			ultimo = arista.hasta
+			ultimo = arista[1]
 	camino.append(origen)
 	return camino
 

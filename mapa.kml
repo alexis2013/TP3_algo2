@@ -29,7 +29,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ffff</color>
+						<color>#ffff00ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -40,7 +40,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ffff</color>
+						<color>#ffff00ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -73,7 +73,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ffff00ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -84,7 +84,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ffff00ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
