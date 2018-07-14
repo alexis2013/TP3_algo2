@@ -16,19 +16,18 @@ class Arista(object):
 
 		return self.peso	
 
-	def obt_inicio(self):
-
-		return self.desde
-
-	def obt_fin(self):
-
-		return self.hasta	
-
 def cmp_aristas(a_1, a_2):
 	if a_1.obt_peso() > a_2.obt_peso():
-		return -1
-	if a_1.obt_peso() < a_2.obt_peso():
 		return 1
+	if a_1.obt_peso() < a_2.obt_peso():
+		return -1
+	return 0
+
+def cmp_arista(a_1, a_2):
+	if a_1[2] > a_2[2]:
+		return 1
+	if a_1[2] < a_2[2]:
+		return -1
 	return 0
 
 
@@ -227,8 +226,7 @@ def arbol_tendido_minimo(grafo):  #mst_prim
 	visitados = set()
 	visitados.add(inicio)
 	heap = Heap(cmp_aristas)
-	arbol = Grafo(False, True)
-	arbol.agregar_vertice(inicio)
+	arbol = Grafo(True, True)
 	for v in grafo.obt_vertices():
 		arbol.agregar_vertice(v)
 	for v in grafo.obtener_vecinos(inicio):
@@ -239,9 +237,7 @@ def arbol_tendido_minimo(grafo):  #mst_prim
 		if v in visitados:
 			continue
 		arbol.agregar_arista(arista.desde, arista.hasta, arista.obt_peso())
-		print(arista.desde, arista.hasta)
 		visitados.add(v)
-		print(visitados)
 		for w in grafo.obtener_vecinos(v):
 			heap.encolar(Arista(v ,w , grafo.ver_peso(v,w)))
 	return arbol

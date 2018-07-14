@@ -40,11 +40,11 @@ class Heap():
 			a_comparar = pos_hijo_1
 		else:
 			res_cmp = self.cmp(self.arreglo[pos_hijo_1], self.arreglo[pos_hijo_2])
-			if res_cmp > 0:
+			if res_cmp < 0:
 				a_comparar = pos_hijo_1
 			else:
 				a_comparar = pos_hijo_2
-		if self.cmp(self.arreglo[a_comparar], self.arreglo[pos]) < 0:
+		if self.cmp(self.arreglo[a_comparar], self.arreglo[pos]) > 0:
 			return
 		self.swap(a_comparar, pos)
 		return self.downheap(a_comparar)
@@ -65,5 +65,9 @@ class Heap():
 		self.cantidad -= 1
 		self.downheap(0)
 		return res
+
+	def obt_arreglo(self):
+
+		return self.arreglo
 
 
