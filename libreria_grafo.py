@@ -69,7 +69,7 @@ def camino_minimo(grafo, desde, hasta):
 	return caminos
 
 
-def minimo_viajante (camino , peso , camino2,peso2):
+def minimo_viajante (camino , peso , camino2, peso2):
 	if (peso > peso2):
 		return True
 	return False
@@ -86,6 +86,8 @@ def _dfs_viajante(grafo,origen,v,peso_final,peso_actual,camino_actual,camino_fin
 		if minimo_viajante(camino_final, peso_final, camino_actual, peso_actual+grafo.ver_peso(origen,v)):
 			camino_final = camino_actual.copy()
 			peso_final = peso_actual + grafo.ver_peso(origen,v)
+			print(camino_final)
+			print(peso_final)
 		return camino_final, peso_final
 
 	for w in grafo.obtener_vecinos(v):
@@ -114,10 +116,10 @@ def viajante(grafo, origen):   #solo para no dirigido, pesado, y completo
 		if v in visitados:
 			continue
 		camino.append(v)
-		peso = grafo.ver_peso(anterior , v) + peso
+		peso = float(grafo.ver_peso(anterior , v)) + peso
 		anterior = v
-	peso += grafo.ver_peso(anterior, origen)
-	camino, peso = _dfs_viajante(grafo,origen,origen, peso, 0, [], camino,visitados)
+	peso += float(grafo.ver_peso(anterior, origen))
+	camino, peso = _dfs_viajante(grafo,origen,origen, peso, 0, [], camino,set(),0)
 	camino.append(origen)
 	return peso, camino
 
