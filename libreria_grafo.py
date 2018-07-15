@@ -122,10 +122,14 @@ def viajante_aproximado(grafo, origen):
 
 	camino = []
 	visitados = set()
+	anterior = None
 	ultimo = origen
+	peso = 0
 	while ultimo:
 		visitados.add(ultimo)
 		camino.append(ultimo)
+		if anterior :
+			peso += grafo.ver_peso(anterior, ultimo)
 		heap = Heap(cmp_arista)
 		for v in grafo.obtener_vecinos(ultimo):
 			if v in visitados:
@@ -135,9 +139,10 @@ def viajante_aproximado(grafo, origen):
 			ultimo = None
 		else:
 			arista = heap.desencolar()
+			anterior = ultimo
 			ultimo = arista[1]
 	camino.append(origen)
-	return camino
+	return camino, peso
 
 def orden_topologico(grafo):
 

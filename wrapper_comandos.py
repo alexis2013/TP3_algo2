@@ -39,9 +39,9 @@ def recorrido_optimo(grafo, origen):
 
 def recorrido_aproximado(grafo, origen):
 
-	camino = viajante_aproximado(grafo, origen)
+	camino, peso = viajante_aproximado(grafo, origen)
 	cant_camino = len(camino)
-	stdout_flechas(camino, cant_camino)
+	stdout_flechas(camino, cant_camino, peso)
 	return camino
 
 def reducir_caminos(grafo, n_archivo, ciudades):
