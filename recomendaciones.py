@@ -46,15 +46,14 @@ def reducir_caminos(grafo, n_archivo, ciudades):
 	cant_ciudades = len(ciudades)
 	grafo_minimo = arbol_tendido_minimo(grafo)
 	with open(n_archivo, "w") as archivo:
-		archivo.write("{} \n".format(str(cant_ciudades)))
+		archivo.write("{}\n".format(cant_ciudades))
 		for key, values in ciudades.items():
-			archivo.write("{},{},{} \n".format(key, *values))
-		archivo.write("{} \n".format(str(grafo_minimo.cant_aristas())))
+			archivo.write("{},{},{}\n".format(key, *values))
+		archivo.write("{}\n".format(grafo_minimo.cant_aristas()))
 		for v in grafo_minimo.obt_vertices():
 			for w in grafo_minimo.obtener_vecinos(v):
-				#print(v, " - ", w, " - ", grafo_minimo.ver_peso(v, w))
 				contador += grafo_minimo.ver_peso(v, w)
-				archivo.write("{},{},{} \n".format(v, w, grafo_minimo.ver_peso(v, w)))
+				archivo.write("{},{},{}\n".format(v, w, grafo_minimo.ver_peso(v, w)))
 	print(contador)
 
 

@@ -41,7 +41,7 @@ with open(sys.argv[1], "r") as archivo:
 			linea = archivo.readline()
 			linea = linea.rstrip("\n")
 			linea = linea.split(",")
-			grafo.agregar_arista(linea[0], linea[1], float(linea[2]))
+			grafo.agregar_arista(linea[0], linea[1], int(linea[2]))
 		linea = archivo.readline()
 		linea = linea.rstrip("\n")
 
