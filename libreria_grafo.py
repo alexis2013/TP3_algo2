@@ -12,7 +12,7 @@ def cmp_arista(a_1, a_2):
 	return 0
 
 
-def dijkstra(grafo, inicio,fin):
+def dijkstra(grafo, inicio, fin):
 
 	heap = Heap(cmp_arista)
 	pesos = {}
@@ -22,7 +22,7 @@ def dijkstra(grafo, inicio,fin):
 	padres = {inicio : None}
 	pesos[inicio] = 0
 
-	heap.encolar((None,inicio,pesos[inicio]))
+	heap.encolar((None, inicio, pesos[inicio]))
 
 	while(not heap.esta_vacio()):
 		arista = heap.desencolar()
@@ -30,12 +30,11 @@ def dijkstra(grafo, inicio,fin):
 		desde = arista[0]
 		if(desde == fin):      
 			return pesos, padres
-
 		for v in grafo.obtener_vecinos(hasta):
-			if pesos[v] > pesos[hasta] + int(grafo.ver_peso(hasta,v)):
+			if pesos[v] > pesos[hasta] + grafo.ver_peso(hasta,v):
 				padres[v] = hasta
-				pesos[v] = pesos[hasta] + int(grafo.ver_peso(hasta,v))
-				heap.encolar((hasta, v, int(pesos[v])))
+				pesos[v] = pesos[hasta] + grafo.ver_peso(hasta,v)
+				heap.encolar((hasta, v, pesos[v]))
 	return padres			
 
 
@@ -86,8 +85,6 @@ def _dfs_viajante(grafo,origen,v,peso_final,peso_actual,camino_actual,camino_fin
 		if minimo_viajante(camino_final, peso_final, camino_actual, peso_actual+grafo.ver_peso(origen,v)):
 			camino_final = camino_actual.copy()
 			peso_final = peso_actual + grafo.ver_peso(origen,v)
-			print(camino_final)
-			print(peso_final)
 		return camino_final, peso_final
 
 	for w in grafo.obtener_vecinos(v):
@@ -102,8 +99,6 @@ def _dfs_viajante(grafo,origen,v,peso_final,peso_actual,camino_actual,camino_fin
 	return camino_final , peso_final
 	
 def viajante(grafo, origen):   #solo para no dirigido, pesado, y completo
-	if not grafo.vertice_esta(origen):
-		return None	
 
 	visitados = set()
 	restantes = set()
@@ -116,17 +111,15 @@ def viajante(grafo, origen):   #solo para no dirigido, pesado, y completo
 		if v in visitados:
 			continue
 		camino.append(v)
-		peso = float(grafo.ver_peso(anterior , v)) + peso
+		peso = grafo.ver_peso(anterior , v) + peso
 		anterior = v
-	peso += float(grafo.ver_peso(anterior, origen))
+	peso += grafo.ver_peso(anterior, origen)
 	camino, peso = _dfs_viajante(grafo,origen,origen, peso, 0, [], camino,set(),0)
 	camino.append(origen)
 	return peso, camino
 
 def viajante_aproximado(grafo, origen):
 
-	if not grafo.vertice_esta(origen):
-		return None	
 	camino = []
 	visitados = set()
 	ultimo = origen

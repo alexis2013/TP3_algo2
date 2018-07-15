@@ -9,6 +9,18 @@ from manejo_kml import *
 import sys
 import ctypes, ctypes.util
 
+def joinear_ciudades(cadenas):
+	
+	i = 0
+	cant_cadenas = len(cadenas)
+	while i < cant_cadenas:
+		if cadenas[i][-1] == ",":
+			cadenas[i] = cadenas[i].rstrip(",")
+		if cadenas[i] not in diccionario_ciudades:
+			cadenas[i] = " ".join(cadenas[i : i + 2])
+			cant_cadenas -= 1
+		i += 1
+	return cadenas
 
 if len(sys.argv) != 3:
 	print("error cantidad argumentos invalida \n")
@@ -50,27 +62,27 @@ for linea in sys.stdin:
 	cadenas = linea.split(" ")
 
 	if(cadenas[0] == "ir"):
-		cadenas[1] = cadenas[1].rstrip(',')
+		cadenas[1:] = joinear_ciudades(cadenas[1:])
 		resul = camino_ini_fin(grafo, cadenas[1], cadenas[2])
 		escribir_kml(sys.argv[2], resul, diccionario_ciudades, linea)
 
-	if(cadenas[0] == "viaje"):
-		cadenas[1] = cadenas[1].rstrip(',')
-		if cadenas[1] == "aproximado" : 
+	elif(cadenas[0] == "viaje"):
+		cadenas[2:] = joinear_ciudades(cadenas[2:])
+		if cadenas[1] == "aproximado," : 
 			resul = recorrido_aproximado(grafo, cadenas[2])
 			escribir_kml(sys.argv[2], resul, diccionario_ciudades, linea)
-		elif(cadenas[1] == "optimo"):
+		elif(cadenas[1] == "optimo,"):
 			resul = recorrido_optimo(grafo, cadenas[2])
 			escribir_kml(sys.argv[2], resul, diccionario_ciudades, linea)
 		
-
-	if(cadenas[0] == "itinerario"):
+	elif(cadenas[0] == "itinerario"):
+		cadenas[1:] =  joinear_ciudades(cadenas[1:])
 		res = itinerario(grafo.obt_vertices(), cadenas[1])
 		escribir_kml(sys.argv[2], res, diccionario_ciudades, linea)
 
-
-	if(cadenas[0] == "reducir_caminos"):
-		sys.stdout.write("Peso total: {}\n".format(reducir_caminos(grafo, cadenas[1], diccionario_ciudades)))
+	elif(cadenas[0] == "reducir_caminos"):
+		res = reducir_caminos(grafo, cadenas[1], diccionario_ciudades)
+		sys.stdout.write("Peso total: {}\n".format(res))
 
 with open(sys.argv[2], "a+") as archivo:
 	archivo.write("\t</Document>\n")

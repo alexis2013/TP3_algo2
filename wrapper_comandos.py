@@ -2,7 +2,6 @@ from libreria_grafo import *
 from grafo import Grafo
 import sys
 
-
 def itinerario(vertices, n_archivo):
 
 	grafo = Grafo(True, False)
@@ -34,14 +33,15 @@ def camino_ini_fin(grafo, desde, hasta):
 
 def recorrido_optimo(grafo, origen):
 	peso, camino = viajante(grafo,origen)
-	stdout_flechas(camino, len(camino), peso)
+	cant_camino = len(camino)
+	stdout_flechas(camino, cant_camino, peso)
 	return camino
 
 def recorrido_aproximado(grafo, origen):
 
 	camino = viajante_aproximado(grafo, origen)
 	cant_camino = len(camino)
-	stdout_flechas(camino, cant_camino, )
+	stdout_flechas(camino, cant_camino)
 	return camino
 
 def reducir_caminos(grafo, n_archivo, ciudades):
