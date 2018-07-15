@@ -79,7 +79,6 @@ for linea in sys.stdin:
 			escribir_kml(sys.argv[2], resul, diccionario_ciudades, linea)
 		
 	elif(cadenas[0] == "itinerario"):
-		cadenas[1:] =  joinear_ciudades(cadenas[1:])
 		res = itinerario(grafo.obt_vertices(), cadenas[1])
 		escribir_kml(sys.argv[2], res, diccionario_ciudades, linea)
 
