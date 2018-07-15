@@ -18,7 +18,7 @@ def itinerario(vertices, n_archivo):
 	return orden_topologico(grafo)
 
 def camino_ini_fin(grafo,desde,hasta):
-
+	
 	peso, camino = camino_minimo(grafo,desde,hasta)
 	cant_camino = len(camino)
 	for i in range(cant_camino-1):
@@ -28,7 +28,9 @@ def camino_ini_fin(grafo,desde,hasta):
 	return camino
 
 def recorrido_optimo(grafo,origen):
-	camino = viajante_aproximado(grafo,origen)
+	peso, camino = viajante(grafo,origen)
+	print (camino)
+	print("Costo total: {}".format(peso))
 	return camino
 
 def recorrido_aproximado(grafo, origen):
