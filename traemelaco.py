@@ -4,7 +4,7 @@ from cola import Cola
 from pila import Pila
 from heap_reducido import Heap
 from libreria_grafo import *
-from recomendaciones import *
+from wrapper_comandos import *
 from manejo_kml import *
 import sys
 import ctypes, ctypes.util

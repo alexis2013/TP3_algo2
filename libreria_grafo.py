@@ -36,7 +36,7 @@ def dijkstra(grafo, inicio,fin):
 				padres[v] = hasta
 				pesos[v] = pesos[hasta] + int(grafo.ver_peso(hasta,v))
 				heap.encolar((hasta, v, int(pesos[v])))
-	return pesos, padres			
+	return padres			
 
 
 def bfs(grafo, inicio):
@@ -62,18 +62,11 @@ def bfs(grafo, inicio):
 def camino_minimo(grafo, desde, hasta):
 
 	res = []
-	if grafo.es_pesado:
-		pesos, caminos = dijkstra(grafo, desde, hasta)
+	if grafo.es_pesado():
+		caminos = dijkstra(grafo, desde, hasta)
 	else:
-		caminos = grafo.bfs()
-	aux = hasta
-	pila = Pila()
-	while(aux):
-		pila.apilar(aux)
-		aux = caminos[aux]
-	while(not pila.esta_vacia()):
-		res.append(pila.desapilar())
-	return  pesos[hasta], res
+		caminos = bfs(grafo, desde)
+	return caminos
 
 
 def minimo_viajante (camino , peso , camino2,peso2):

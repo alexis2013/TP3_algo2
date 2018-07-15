@@ -1,5 +1,6 @@
 from libreria_grafo import *
 from grafo import Grafo
+import sys
 
 
 def itinerario(vertices, n_archivo):
@@ -15,31 +16,32 @@ def itinerario(vertices, n_archivo):
 		linea = linea.split(",")
 		grafo.agregar_arista(linea[0], linea[1])
 
-	return orden_topologico(grafo)
+	res = orden_topologico(grafo)
+	cant_res = len(res)
+	peso = 0
+	for i in range(1, cant_res):
+		peso += grafo.ver_peso(res[i - 1], res[i])
+	stdout_flechas(res, cant_res, peso)
+	return res
 
-def camino_ini_fin(grafo,desde,hasta):
+
+def camino_ini_fin(grafo, desde, hasta):
 	
-	peso, camino = camino_minimo(grafo,desde,hasta)
-	cant_camino = len(camino)
-	for i in range(cant_camino-1):
-		print("{} -> ".format(camino[i]), end = "")
-	print(camino[cant_camino-1])
-	print("Costo total: {}".format(peso))
-	return camino
+	camino = camino_minimo(grafo, desde, hasta)
+	res, peso = reconstruir_camino(grafo, camino, desde, hasta)
+	stdout_flechas(res, len(res), peso)
+	return res
 
-def recorrido_optimo(grafo,origen):
+def recorrido_optimo(grafo, origen):
 	peso, camino = viajante(grafo,origen)
-	print (camino)
-	print("Costo total: {}".format(peso))
+	stdout_flechas(camino, len(camino), peso)
 	return camino
 
 def recorrido_aproximado(grafo, origen):
 
 	camino = viajante_aproximado(grafo, origen)
 	cant_camino = len(camino)
-	for i in range(cant_camino-1):
-		print("{} -> ".format(camino[i]), end = "")
-	print(camino[cant_camino-1])
+	stdout_flechas(camino, cant_camino, )
 	return camino
 
 def reducir_caminos(grafo, n_archivo, ciudades):
@@ -58,6 +60,26 @@ def reducir_caminos(grafo, n_archivo, ciudades):
 				archivo.write("{},{},{}\n".format(v, w, grafo_minimo.ver_peso(v, w)))
 	return contador
 
+def reconstruir_camino(grafo, diccio, desde, hasta):
 
+	res = []
+	aux = hasta
+	pila = Pila()
+	cont = 0
+	peso = 0
+	while(aux):
+		pila.apilar(aux)
+		aux = diccio[aux]
+	while(not pila.esta_vacia()):
+		res.append(pila.desapilar())
+		cont += 1
+	for i in range(1, cont):
+		peso += grafo.ver_peso(res[i-1], res[i])
+	return  res, peso
 
-
+def stdout_flechas(lista, cant_elem, peso = None):
+	for i in range(cant_elem - 1):
+		sys.stdout.write("{} -> ".format(lista[i]))
+	sys.stdout.write("{}\n".format(lista[cant_elem-1]))
+	if peso != None:
+		sys.stdout.write("Costo total: {}\n".format(peso))

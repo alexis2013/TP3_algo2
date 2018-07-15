@@ -92,7 +92,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -103,7 +103,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -114,7 +114,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -125,7 +125,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -136,7 +136,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -147,7 +147,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -158,7 +158,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -169,7 +169,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -180,7 +180,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -191,7 +191,7 @@
  				</LineString>
 				<Style>
 					<LineStyle>
-						<color>#ff00ff00</color>
+						<color>#ff0000ff</color>
 					</LineStyle>
 				</Style>
 			</Placemark>
@@ -199,6 +199,50 @@
 			<Placemark>
 				<LineString>
 					<coordinates>54.183333, 45.183333 53.183333, 50.116667</coordinates>
+ 				</LineString>
+				<Style>
+					<LineStyle>
+						<color>#ff0000ff</color>
+					</LineStyle>
+				</Style>
+			</Placemark>
+
+		<name>ir Moscu, Sochi</name>
+			<Placemark>
+				<name>Sochi</name>
+				<Point>
+					<coordinates>55.755833, 37.617778</coordinates>
+				</Point>
+			</Placemark>
+
+			<Placemark>
+				<name>Moscu</name>
+				<Point>
+					<coordinates>56.326944, 44.007500</coordinates>
+				</Point>
+			</Placemark>
+
+			<Placemark>
+				<name>Nizhni Novgorod</name>
+				<Point>
+					<coordinates>43.585278, 39.720278</coordinates>
+				</Point>
+			</Placemark>
+
+			<Placemark>
+				<LineString>
+					<coordinates>55.755833, 37.617778 56.326944, 44.007500</coordinates>
+ 				</LineString>
+				<Style>
+					<LineStyle>
+						<color>#ff00ff00</color>
+					</LineStyle>
+				</Style>
+			</Placemark>
+
+			<Placemark>
+				<LineString>
+					<coordinates>56.326944, 44.007500 43.585278, 39.720278</coordinates>
  				</LineString>
 				<Style>
 					<LineStyle>

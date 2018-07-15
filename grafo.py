@@ -6,7 +6,7 @@ class Grafo:
 
 		self.grafo = {}
 		self.es_dirigido = dirigido
-		self.es_pesado = pesado
+		self.pesado = pesado
 		self.cantidad_vertices = 0
 		self.cantidad_aristas = 0
 		self.vertices = []
@@ -17,7 +17,7 @@ class Grafo:
 
 	def es_pesado(self):
 
-		return self.es_pesado
+		return self.pesado
 
 	def es_dirigido(self):
 
