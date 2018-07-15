@@ -18,8 +18,10 @@ def joinear_ciudades(cadenas):
 			cadenas[i] = cadenas[i].rstrip(",")
 		if cadenas[i] not in diccionario_ciudades:
 			cadenas[i] = " ".join(cadenas[i : i + 2])
+			cadenas.pop(i + 1)
 			cant_cadenas -= 1
-		i += 1
+		else:
+			i += 1
 	return cadenas
 
 if len(sys.argv) != 3:
@@ -62,6 +64,7 @@ for linea in sys.stdin:
 	cadenas = linea.split(" ")
 
 	if(cadenas[0] == "ir"):
+		cadena_aux = []
 		cadenas[1:] = joinear_ciudades(cadenas[1:])
 		resul = camino_ini_fin(grafo, cadenas[1], cadenas[2])
 		escribir_kml(sys.argv[2], resul, diccionario_ciudades, linea)
