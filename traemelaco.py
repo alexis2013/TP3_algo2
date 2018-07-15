@@ -70,7 +70,7 @@ for linea in sys.stdin:
 
 
 	if(cadenas[0] == "reducir_caminos"):
-		reducir_caminos(grafo, cadenas[1], diccionario_ciudades)
+		sys.stdout.write("Peso total: {}\n".format(reducir_caminos(grafo, cadenas[1], diccionario_ciudades)))
 
 with open(sys.argv[2], "a+") as archivo:
 	archivo.write("\t</Document>\n")
