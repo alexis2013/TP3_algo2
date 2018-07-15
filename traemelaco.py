@@ -10,15 +10,11 @@ import sys
 import ctypes, ctypes.util
 
 
-
-
-
 if len(sys.argv) != 3:
 	print("error cantidad argumentos invalida \n")
 
 grafo = Grafo(False,True)
 diccionario_ciudades = {}
-
 
 with open(sys.argv[2], "w") as archivo:
 	archivo.write('<?xml version="1.0" encoding="UTF-8"?>\n')

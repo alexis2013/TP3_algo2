@@ -4,37 +4,17 @@ from cola import Cola
 from pila import Pila
 from heap_reducido import Heap
 
-class Arista(object):
-
-	def __init__(self, desde, hasta, peso):
-
-		self.desde = desde
-		self.hasta = hasta
-		self.peso = peso
-
-	def obt_peso(self):
-
-		return self.peso	
-
-	def obt_inicio(self):
-
-		return self.desde
-
-	def obt_fin(self):
-
-		return self.hasta	
-
-def cmp_aristas(a_1, a_2):
-	if a_1.obt_peso() > a_2.obt_peso():
-		return -1
-	if a_1.obt_peso() < a_2.obt_peso():
+def cmp_arista(a_1, a_2):
+	if a_1[2] > a_2[2]:
 		return 1
+	if a_1[2] < a_2[2]:
+		return -1
 	return 0
 
 
 def dijkstra(grafo, inicio,fin):
 
-	heap = Heap(cmp_aristas)
+	heap = Heap(cmp_arista)
 	pesos = {}
 
 	for v in grafo.obt_vertices():
@@ -42,20 +22,20 @@ def dijkstra(grafo, inicio,fin):
 	padres = {inicio : None}
 	pesos[inicio] = 0
 
-	heap.encolar(Arista(None,inicio,pesos[inicio]))
+	heap.encolar((None,inicio,pesos[inicio]))
 
 	while(not heap.esta_vacio()):
 		arista = heap.desencolar()
-		hasta = arista.hasta
-		desde = arista.desde
+		hasta = arista[1]
+		desde = arista[0]
 		if(desde == fin):      
 			return pesos, padres
 
 		for v in grafo.obtener_vecinos(hasta):
-			if pesos[v] > pesos[hasta] + float(grafo.ver_peso(hasta,v)):
+			if pesos[v] > pesos[hasta] + int(grafo.ver_peso(hasta,v)):
 				padres[v] = hasta
-				pesos[v] = pesos[hasta] + float(grafo.ver_peso(hasta,v))
-				heap.encolar(Arista(hasta, v, float(pesos[v])))
+				pesos[v] = pesos[hasta] + int(grafo.ver_peso(hasta,v))
+				heap.encolar((hasta, v, int(pesos[v])))
 	return pesos, padres			
 
 
@@ -83,7 +63,6 @@ def camino_minimo(grafo, desde, hasta):
 
 	res = []
 	if grafo.es_pesado:
-		
 		pesos, caminos = dijkstra(grafo, desde, hasta)
 	else:
 		caminos = grafo.bfs()
@@ -142,10 +121,15 @@ def viajante(grafo, origen):   #solo para no dirigido, pesado, y completo
 		if v in visitados:
 			continue
 		camino.append(v)
-		peso = float(grafo.ver_peso(anterior , v)) + peso
+		peso = grafo.ver_peso(anterior , v) + peso
 		anterior = v
+<<<<<<< HEAD
 	peso += float(grafo.ver_peso(anterior, origen))
 	camino, peso = _dfs_viajante(grafo,origen,origen, peso, 0, [], camino,set(),0)
+=======
+	peso += grafo.ver_peso(anterior, origen)
+	camino, peso = _dfs_viajante(grafo,origen,origen, peso, 0, [], camino,visitados)
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 	camino.append(origen)
 	return peso, camino
 
@@ -159,16 +143,16 @@ def viajante_aproximado(grafo, origen):
 	while ultimo:
 		visitados.add(ultimo)
 		camino.append(ultimo)
-		heap = Heap(cmp_aristas)
+		heap = Heap(cmp_arista)
 		for v in grafo.obtener_vecinos(ultimo):
 			if v in visitados:
 				continue
-			heap.encolar(Arista(ultimo,v,grafo.ver_peso(ultimo,v)))
+			heap.encolar((ultimo,v,grafo.ver_peso(ultimo,v)))
 		if heap.esta_vacio():
 			ultimo = None
 		else:
 			arista = heap.desencolar()
-			ultimo = arista.hasta
+			ultimo = arista[1]
 	camino.append(origen)
 	return camino
 
@@ -203,22 +187,19 @@ def arbol_tendido_minimo(grafo):  #mst_prim
 	inicio = grafo.obt_1_vertice()
 	visitados = set()
 	visitados.add(inicio)
-	heap = Heap(cmp_aristas)
-	arbol = Grafo(False, True)
-	arbol.agregar_vertice(inicio)
+	heap = Heap(cmp_arista)
+	arbol = Grafo(True, True)
 	for v in grafo.obt_vertices():
 		arbol.agregar_vertice(v)
 	for v in grafo.obtener_vecinos(inicio):
-		heap.encolar(Arista(inicio, v, grafo.ver_peso(inicio, v)))
+		heap.encolar((inicio, v, grafo.ver_peso(inicio, v)))
 	while not heap.esta_vacio():
 		arista = heap.desencolar()
-		v = arista.hasta
+		v = arista[1]
 		if v in visitados:
 			continue
-		arbol.agregar_arista(arista.desde, arista.hasta, arista.obt_peso())
-		print(arista.desde, arista.hasta)
+		arbol.agregar_arista(arista[0], arista[1], arista[2])
 		visitados.add(v)
-		print(visitados)
 		for w in grafo.obtener_vecinos(v):
-			heap.encolar(Arista(v ,w , grafo.ver_peso(v,w)))
+			heap.encolar((v ,w , grafo.ver_peso(v,w)))
 	return arbol

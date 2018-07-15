@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://earth.google.com/kml/2.1">
 	<Document>
+<<<<<<< HEAD
 		<name>viaje optimo, Sochi</name>
 			<Placemark>
 				<name>Sochi</name>
@@ -68,6 +69,12 @@
 			<Placemark>
 				<name>Samara</name>
 				<Point>
+=======
+		<name>ir Moscu, Sochi</name>
+			<Placemark>
+				<name>Sochi</name>
+				<Point>
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 					<coordinates>55.755833, 37.617778</coordinates>
 				</Point>
 			</Placemark>
@@ -75,12 +82,20 @@
 			<Placemark>
 				<name>Moscu</name>
 				<Point>
+<<<<<<< HEAD
 					<coordinates>47.233333, 39.716667</coordinates>
+=======
+					<coordinates>56.326944, 44.007500</coordinates>
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 				</Point>
 			</Placemark>
 
 			<Placemark>
+<<<<<<< HEAD
 				<name>Rostov del Don</name>
+=======
+				<name>Nizhni Novgorod</name>
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 				<Point>
 					<coordinates>43.585278, 39.720278</coordinates>
 				</Point>
@@ -88,26 +103,43 @@
 
 			<Placemark>
 				<LineString>
+<<<<<<< HEAD
 					<coordinates>43.585278, 39.720278 48.700000, 44.483333</coordinates>
  				</LineString>
 				<Style>
 					<LineStyle>
 						<color>#ff00ffff</color>
+=======
+					<coordinates>55.755833, 37.617778 56.326944, 44.007500</coordinates>
+ 				</LineString>
+				<Style>
+					<LineStyle>
+						<color>#ffff00ff</color>
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 					</LineStyle>
 				</Style>
 			</Placemark>
 
 			<Placemark>
 				<LineString>
+<<<<<<< HEAD
 					<coordinates>48.700000, 44.483333 55.790833, 49.114444</coordinates>
  				</LineString>
 				<Style>
 					<LineStyle>
 						<color>#ff00ffff</color>
+=======
+					<coordinates>56.326944, 44.007500 43.585278, 39.720278</coordinates>
+ 				</LineString>
+				<Style>
+					<LineStyle>
+						<color>#ffff00ff</color>
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 					</LineStyle>
 				</Style>
 			</Placemark>
 
+<<<<<<< HEAD
 			<Placemark>
 				<LineString>
 					<coordinates>55.790833, 49.114444 56.326944, 44.007500</coordinates>
@@ -183,26 +215,64 @@
 						<color>#ff00ffff</color>
 					</LineStyle>
 				</Style>
+=======
+		<name>ir Moscu, Saransk</name>
+			<Placemark>
+				<name>Saransk</name>
+				<Point>
+					<coordinates>55.755833, 37.617778</coordinates>
+				</Point>
+			</Placemark>
+
+			<Placemark>
+				<name>Moscu</name>
+				<Point>
+					<coordinates>53.183333, 50.116667</coordinates>
+				</Point>
+			</Placemark>
+
+			<Placemark>
+				<name>Samara</name>
+				<Point>
+					<coordinates>54.183333, 45.183333</coordinates>
+				</Point>
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 			</Placemark>
 
 			<Placemark>
 				<LineString>
+<<<<<<< HEAD
 					<coordinates>55.755833, 37.617778 47.233333, 39.716667</coordinates>
  				</LineString>
 				<Style>
 					<LineStyle>
 						<color>#ff00ffff</color>
+=======
+					<coordinates>55.755833, 37.617778 53.183333, 50.116667</coordinates>
+ 				</LineString>
+				<Style>
+					<LineStyle>
+						<color>#ffff00ff</color>
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 					</LineStyle>
 				</Style>
 			</Placemark>
 
 			<Placemark>
 				<LineString>
+<<<<<<< HEAD
 					<coordinates>47.233333, 39.716667 43.585278, 39.720278</coordinates>
  				</LineString>
 				<Style>
 					<LineStyle>
 						<color>#ff00ffff</color>
+=======
+					<coordinates>53.183333, 50.116667 54.183333, 45.183333</coordinates>
+ 				</LineString>
+				<Style>
+					<LineStyle>
+						<color>#ffff00ff</color>
+>>>>>>> 32a8be2622e0a5513de4e8a8ecfd06957540117b
 					</LineStyle>
 				</Style>
 			</Placemark>

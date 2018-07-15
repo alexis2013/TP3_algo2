@@ -54,6 +54,7 @@ def reducir_caminos(grafo, n_archivo, ciudades):
 		archivo.write("{} \n".format(str(grafo_minimo.cant_aristas())))
 		for v in grafo_minimo.obt_vertices():
 			for w in grafo_minimo.obtener_vecinos(v):
+				#print(v, " - ", w, " - ", grafo_minimo.ver_peso(v, w))
 				contador += grafo_minimo.ver_peso(v, w)
 				archivo.write("{},{},{} \n".format(v, w, grafo_minimo.ver_peso(v, w)))
 	print(contador)
